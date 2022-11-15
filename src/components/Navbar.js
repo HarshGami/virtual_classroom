@@ -1,12 +1,40 @@
 import "./navbar.css";
-import React from 'react'
+import React from "react";
+import { Link } from "react-router-dom";
+import { UserAuth } from "../context/AuthContext";
 
-function Navbar() {
+const Navbar = () => {
+  const { user, logOut } = UserAuth();
+
+  const handleSignOut = async () => {
+    try {
+      await logOut();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
-    <div>
-      
-    </div>
-  )
-}
+    <>
+      <nav className="navbar">
+        <div className="navbar__left">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/5/59/Google_Classroom_Logo.png"
+            alt="Google Classroom Image"
+            className="navbar__logo"
+          />{" "}
+          <span>Virtual-Classroom</span>
+        </div>
+        <div className="navbar__right">
+          {user?.displayName ? (
+            <button onClick={handleSignOut}>Logout</button>
+          ) : (
+            <Link to="/signin">Sign in</Link>
+          )}
+        </div>
+      </nav>
+    </>
+  );
+};
 
-export default Navbar
+export default Navbar;
