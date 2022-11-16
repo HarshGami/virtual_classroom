@@ -1,3 +1,4 @@
+import './signin.css'
 import React, { useEffect } from 'react';
 import { GoogleButton } from 'react-google-button';
 import { UserAuth } from '../context/AuthContext';
@@ -22,10 +23,18 @@ const Signin = () => {
   }, [user]);
 
   return (
-    <div>
-      <h1 className='text-center text-3xl font-bold py-8'>Sign in</h1>
-      <div className='max-w-[240px] m-auto py-4'>
-        <GoogleButton onClick={handleGoogleSignIn} />
+    <div className='sign'>
+      <div className="sign__container">
+        <h2>Virtual-Classroom</h2>
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/5/59/Google_Classroom_Logo.png"
+          alt="Google Classroom Image"
+          className="sign__image"
+        />
+        <br/>
+        <h4>sign in</h4>
+        <h4>using google</h4>
+        <button className='sign__button' onClick={handleGoogleSignIn} >Sign in</button>
       </div>
     </div>
   );

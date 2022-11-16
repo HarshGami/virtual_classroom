@@ -1,10 +1,17 @@
+*{
+  box-sizing:border-box;
+  margin: 0;
+  padding: 0;
+}
+
 .navbar {
+  background-color: whitesmoke;
     width: 100vw;
-    height: 65px;
+    height: 50px;
     border-bottom: 1px solid #dcdcdc;
     display: flex;
     justify-content: space-between;
-    padding: 0 20px;
+    padding-right: 20px;
     align-items: center;
   }
   .navbar__left {
@@ -12,7 +19,7 @@
     align-items: center;
   }
   .navbar__left img {
-    margin-right: 20px;
+    margin-right: 10px;
     margin-left: 20px;
   }
   .navbar__left span {
@@ -22,7 +29,21 @@
     display: flex;
     align-items: center;
   }
+
   .navbar__logo {
     height: 30px;
     width: auto;
+  }
+
+  .navbar__button{
+    text-decoration: none;
+    color: green;
+    border: 1px solid green;
+    border-radius: 8px;
+    padding: 4px 15px;
+  }
+
+  .navbar__button:hover{
+    color: white;
+    background-color: green;
   }
