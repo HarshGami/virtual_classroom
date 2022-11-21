@@ -1,32 +1,49 @@
-import React from 'react';
-import { Route, Routes } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Protected from './components/Protected';
-import { AuthContextProvider } from './context/AuthContext';
-import Account from './pages/Account';
-import Home from './pages/Home';
-import Signin from './pages/Signin';
 
-function App() {
+import React from "react";
+import Home from "./pages/home/home";
+import Dashboard from "./pages/Dashboard/Dashboard";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Protected from './components/Protected';
+import CreateClassroom from "./pages/Dashboard/CreateClassroom";
+import JoinClassroom from "./pages/Dashboard/JoinClassroom";
+import { AuthContextProvider } from './context/AuthContext';
+
+export default function App() {
   return (
-    <div>
+    <Router>
       <AuthContextProvider>
-        <Navbar />
+        {/* <Navbar /> */}
         <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/signin' element={<Signin />} />
+          <Route exact path="/" element={<Home />} />
+          {/* <Route path="/login" element={<Signin1 />} /> */}
           <Route
-            path='/account'
+            path='/dashboard'
             element={
               <Protected>
-                <Account />
+                <Dashboard />
+              </Protected>
+            }
+          />
+          <Route
+            path='/create_classroom'
+            element={
+              <Protected>
+                <CreateClassroom />
+              </Protected>
+            }
+          />
+          <Route
+            path='/join_classroom'
+            element={
+              <Protected>
+                <JoinClassroom />
               </Protected>
             }
           />
         </Routes>
       </AuthContextProvider>
-    </div>
+    </Router >
   );
 }
 
-export default App;
+
